@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Privacy policy for SafeRoute — crime-aware walking navigation for the UK.">
+<meta name="robots" content="index,follow">
+<title>SafeRoute — Privacy Policy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── Design tokens (mirroring SafeRoute iOS) ─── */
+  :root {
+    --sr-background: #F4F0E6;        /* cream */
+    --sr-panel:      #EFE9DA;        /* slightly warmer cream for cards */
+    --sr-text:       #1C1917;        /* near-black */
+    --sr-text-muted: #78716C;        /* warm grey */
+    --sr-text-subtle:#A8A29E;        /* lighter warm grey */
+    --sr-accent:     #0E766E;        /* teal */
+    --sr-accent-hover:#0B5A55;
+    --sr-border:     #D6D0C0;
+    --sr-safe:       #16A34A;
+    --max-width:     680px;
+    --side-padding:  clamp(20px, 5vw, 32px);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--sr-background);
+    color: var(--sr-text);
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ─── Layout ─── */
+  .page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: clamp(32px, 8vw, 64px) var(--side-padding) 96px;
+  }
+
+  /* ─── Header / wordmark ─── */
+  header.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .shield {
+    width: 44px;
+    height: 44px;
+    background: var(--sr-accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .shield svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+  }
+
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .wordmark .name {
+    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    color: var(--sr-text);
+    line-height: 1;
+  }
+
+  .wordmark .tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--sr-text-muted);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .doc-meta {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--sr-panel);
+    border: 1px solid var(--sr-border);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 14px;
+  }
+
+  .doc-meta dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sr-text-subtle);
+    padding-top: 4px;
+    align-self: start;
+  }
+
+  .doc-meta dd {
+    margin: 0;
+    font-size: 14px;
+    color: var(--sr-text);
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 36px);
+    margin: 0 0 8px;
+    line-height: 1.2;
+    color: var(--sr-text);
+    letter-spacing: -0.01em;
+  }
+
+  h1 .section-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--sr-text-subtle);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sr-text-subtle);
+    font-weight: 500;
+    margin: 56px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--sr-border);
+  }
+
+  h2 .num {
+    color: var(--sr-accent);
+    margin-right: 6px;
+  }
+
+  h2 + p {
+    margin-top: 16px;
+  }
+
+  h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 24px 0 8px;
+    color: var(--sr-text);
+    line-height: 1.3;
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: var(--sr-text);
+  }
+
+  p strong {
+    font-weight: 600;
+    color: var(--sr-text);
+  }
+
+  ul, ol {
+    margin: 0 0 16px;
+    padding-left: 24px;
+  }
+
+  ul li, ol li {
+    margin-bottom: 6px;
+    color: var(--sr-text);
+  }
+
+  a {
+    color: var(--sr-accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.12s ease;
+    word-break: break-word;
+  }
+
+  a:hover {
+    color: var(--sr-accent-hover);
+  }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.92em;
+    background: var(--sr-panel);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--sr-text);
+  }
+
+  /* ─── Tables ─── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0 24px;
+    border: 1px solid var(--sr-border);
+    border-radius: 6px;
+    background: var(--sr-panel);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px 14px;
+    background: var(--sr-background);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sr-text-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--sr-border);
+  }
+
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--sr-border);
+    vertical-align: top;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td strong {
+    font-weight: 600;
+  }
+
+  /* ─── Divider ─── */
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--sr-border);
+    margin: 56px 0;
+  }
+
+  /* ─── Footer ─── */
+  footer.tail {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sr-border);
+    text-align: center;
+  }
+
+  footer.tail p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sr-text-subtle);
+    margin: 0 0 4px;
+  }
+
+  footer.tail .review {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--sr-text-muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 480px) {
+    .page {
+      padding-top: 24px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+
+    .doc-meta {
+      grid-template-columns: 1fr;
+      gap: 12px 0;
+    }
+
+    .doc-meta dt {
+      padding-top: 0;
+    }
+
+    table {
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+    }
+  }
+
+  /* Subtle entrance animation on load */
+  @media (prefers-reduced-motion: no-preference) {
+    .page > * {
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .page > header.brand   { animation-delay: 0.05s; }
+    .page > h1             { animation-delay: 0.10s; }
+    .page > .doc-meta      { animation-delay: 0.15s; }
+    .page > p,
+    .page > h2,
+    .page > h3,
+    .page > ul,
+    .page > ol,
+    .page > .table-wrap,
+    .page > hr,
+    .page > footer         { animation-delay: 0.20s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <header class="brand">
+    <div class="shield" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2 L4 5 V12 C4 17 7.5 21 12 22 C16.5 21 20 17 20 12 V5 Z"/>
+      </svg>
+    </div>
+    <div class="wordmark">
+      <span class="name">SAFEROUTE</span>
+      <span class="tag">// CRIME-AWARE WALKING NAVIGATOR · UK</span>
+    </div>
+  </header>
+
+  <h1><span class="section-marker">// LEGAL · PRIVACY</span>Privacy Policy</h1>
+
+  <dl class="doc-meta">
+    <dt>Effective</dt>
+    <dd>5 May 2026</dd>
+    <dt>Updated</dt>
+    <dd>5 May 2026</dd>
+    <dt>Controller</dt>
+    <dd>Minhaj Khan</dd>
+    <dt>Contact</dt>
+    <dd><a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a></dd>
+  </dl>
+
+  <h2><span class="num">01</span>Who we are</h2>
+  <p>SafeRoute is a crime-aware walking navigation app for the United Kingdom. The data controller is <strong>Minhaj Khan</strong> (an individual based in the State of New York, United States), referred to throughout this policy as "we," "us," or "SafeRoute."</p>
+  <p><strong>Contact:</strong> <a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a></p>
+  <p>This policy explains what personal information SafeRoute collects, why we collect it, how we use it, and the rights you have under the UK General Data Protection Regulation (UK GDPR) and the UK Data Protection Act 2018, as amended by the Data (Use and Access) Act 2025.</p>
+
+  <h2><span class="num">02</span>Scope</h2>
+  <p>This policy applies to the SafeRoute iOS app, the optional SafeRoute Apple Watch companion, and the SafeRoute backend service that supports them. It does not cover third-party services that the app links out to (for example, the OpenStreetMap or Open Government Licence pages), which have their own privacy policies.</p>
+
+  <h2><span class="num">03</span>Information we collect</h2>
+  <p>SafeRoute is designed to collect as little personal information as possible. We do not require accounts, sign-in, or registration. We do not collect names, addresses, phone numbers, or payment information.</p>
+  <p>We process the following limited categories of data while you use the app:</p>
+
+  <h3>Location data (GPS coordinates)</h3>
+  <p>When you actively use SafeRoute to plan or follow a route, the app reads your device's GPS location. Coordinates are sent to our backend solely to compute walking routes and to retrieve crime context for your area. Coordinates are not stored against any persistent identifier on our servers.</p>
+
+  <h3>Search queries</h3>
+  <p>Text you type into the place-search box (for example, a destination name) is sent to our backend, which forwards it to OpenStreetMap's Nominatim service for geocoding.</p>
+
+  <h3>Motion sensor data</h3>
+  <p>If you use the SafeRoute Apple Watch companion, the watch reads device motion data on-device only, to detect off-route deviations. Motion data is not transmitted to our servers.</p>
+
+  <h3>Technical request data</h3>
+  <p>Our backend logs basic request metadata for security and abuse-prevention (request timestamps, IP addresses, response codes). Logs are retained for no more than 30 days and are not used to build a user profile.</p>
+
+  <p>We do <strong>not</strong> use any analytics SDKs, advertising identifiers, attribution frameworks, or third-party trackers. SafeRoute is configured with <code>NSPrivacyTracking = false</code> in its Privacy Manifest.</p>
+
+  <h2><span class="num">04</span>What we do not collect</h2>
+  <p>To remove ambiguity, SafeRoute does <strong>not</strong> collect:</p>
+  <ul>
+    <li>Your name, email address, phone number, or postal address</li>
+    <li>Your contacts, photos, calendar, or other on-device content</li>
+    <li>Your device's advertising identifier (IDFA)</li>
+    <li>Browsing history outside of SafeRoute</li>
+    <li>Health data, biometrics, or financial information</li>
+    <li>Persistent identifiers tying your activity across sessions</li>
+  </ul>
+
+  <h2><span class="num">05</span>Why we use this information</h2>
+  <p>Under Article 13 UK GDPR, we are required to tell you why we process your data and the lawful basis we rely on. Our processing is grounded in the following bases under Article 6(1) UK GDPR:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Purpose</th>
+          <th>Data used</th>
+          <th>Lawful basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Computing walking routes between origin and destination</td>
+          <td>GPS coordinates</td>
+          <td>Performance of a contract <span class="mono">Art. 6(1)(b)</span> — you cannot use a navigation app without sending coordinates to a routing service.</td>
+        </tr>
+        <tr>
+          <td>Showing crime context along candidate routes</td>
+          <td>Approximate area coordinates</td>
+          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — providing the core safety feature you opened the app for.</td>
+        </tr>
+        <tr>
+          <td>Geocoding place searches</td>
+          <td>Search query text</td>
+          <td>Performance of a contract <span class="mono">Art. 6(1)(b)</span></td>
+        </tr>
+        <tr>
+          <td>Off-route detection on the watch</td>
+          <td>Motion sensor (on-device only)</td>
+          <td>Performance of a contract <span class="mono">Art. 6(1)(b)</span></td>
+        </tr>
+        <tr>
+          <td>Backend security, abuse prevention, rate limiting</td>
+          <td>Request metadata, IP address</td>
+          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — protecting the service from abuse.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>We have considered the balancing test for each "legitimate interests" use and concluded that the limited processing involved is proportionate to a clear user-facing benefit. You can object to legitimate-interests processing at any time (see Section 9).</p>
+
+  <h2><span class="num">06</span>Who we share your information with</h2>
+  <p>To deliver the app, your data is processed by a small number of named third parties. We do not sell, rent, or monetise your data, and we share only what is necessary for each subprocessor's specific function.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Subprocessor</th>
+          <th>What they receive</th>
+          <th>Purpose</th>
+          <th>Where</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mapbox, Inc.</strong></td>
+          <td>Origin and destination coordinates, search queries</td>
+          <td>Walking-route directions; map tiles; geocoding</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td><strong>OpenStreetMap Foundation</strong> (Nominatim)</td>
+          <td>Search query text and approximate viewbox</td>
+          <td>Geocoding</td>
+          <td>Germany (Europe)</td>
+        </tr>
+        <tr>
+          <td><strong>data.police.uk</strong> (UK Home Office)</td>
+          <td>Bounding-box coordinates only</td>
+          <td>Public crime statistics retrieval</td>
+          <td>United Kingdom</td>
+        </tr>
+        <tr>
+          <td><strong>Render Services, Inc.</strong></td>
+          <td>All backend traffic (transit only)</td>
+          <td>Hosting our backend</td>
+          <td>Germany (Frankfurt)</td>
+        </tr>
+        <tr>
+          <td><strong>Apple Inc.</strong></td>
+          <td>App distribution; crash reports if you opted in</td>
+          <td>iOS / watchOS platform services</td>
+          <td>Various</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Each subprocessor handles your data under their own privacy policy. Mapbox and Render are subject to their own contractual data-protection terms with us. Apple's privacy practices are governed by their public privacy policy.</p>
+
+  <h2><span class="num">07</span>International transfers</h2>
+  <p>Because the data controller (Minhaj Khan) is based in the United States, your personal data is processed in the U.S. by us and by Mapbox. Our backend infrastructure runs in Germany.</p>
+  <p>The European Commission's adequacy decision recognises the UK as providing adequate data protection. There is no current adequacy decision for the United States, so transfers from the UK to U.S. subprocessors rely on the <strong>UK International Data Transfer Agreement (IDTA)</strong> or the <strong>UK Addendum to the EU Standard Contractual Clauses</strong>, as applicable. We have conducted a Transfer Risk Assessment for transfers to U.S. subprocessors.</p>
+  <p>You can request a copy of the safeguards in place by emailing <a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a>.</p>
+
+  <h2><span class="num">08</span>How long we keep your information</h2>
+  <p>We keep your information only as long as necessary to provide the service:</p>
+  <ul>
+    <li><strong>Live route requests:</strong> Coordinates are processed in memory only and are not persisted to disk on our servers.</li>
+    <li><strong>Backend cache:</strong> Public crime data and place-of-interest data fetched from upstream sources is cached on our servers for up to 24 hours to reduce upstream load. Cached data is keyed by area, not by user.</li>
+    <li><strong>Request logs:</strong> Retained for up to 30 days for security and rate-limiting purposes, then automatically deleted.</li>
+    <li><strong>On-device data:</strong> Your iPhone and Apple Watch retain locally cached map tiles and route history under your device's normal control. You can clear this at any time by deleting the app.</li>
+  </ul>
+  <p>We do not retain any personally-identifying information about you on our servers, because we do not collect any.</p>
+
+  <h2><span class="num">09</span>Your rights under UK GDPR</h2>
+  <p>You have the following rights regarding your personal data. Because we hold no persistent identifiers tying you to specific records, some rights may be inapplicable in practice — but you can always invoke them and we will respond.</p>
+  <ul>
+    <li><strong>Right of access</strong> (Art. 15): you can request a copy of any personal data we hold about you.</li>
+    <li><strong>Right to rectification</strong> (Art. 16): you can request correction of inaccurate data.</li>
+    <li><strong>Right to erasure</strong> (Art. 17): you can request deletion. (In practice, simply uninstalling the app removes any locally cached data.)</li>
+    <li><strong>Right to restrict processing</strong> (Art. 18).</li>
+    <li><strong>Right to data portability</strong> (Art. 20): receive your data in a structured, machine-readable format.</li>
+    <li><strong>Right to object</strong> (Art. 21): you can object to processing based on legitimate interests at any time.</li>
+    <li><strong>Rights relating to automated decision-making and profiling</strong> (Art. 22A, as introduced by the Data (Use and Access) Act 2025): SafeRoute uses an algorithmic crime-exposure score to rank candidate walking routes. This is route ranking based on public data, not a decision made about you, and does not produce legal or similarly significant effects on you. Article 22A safeguards therefore do not apply, but you can disable the safety overlay in-app at any time.</li>
+  </ul>
+  <p>To exercise any of these rights, email <strong><a href="mailto:minhaj@safe-route.app?subject=Privacy%20request">minhaj@safe-route.app</a></strong> with the words "Privacy request" in the subject line. We will respond within one calendar month.</p>
+
+  <h2><span class="num">10</span>Children</h2>
+  <p>SafeRoute is a general-audience navigation app. It is not directed at children under 13 and we do not knowingly collect any personal information from children under 13. SafeRoute may be downloaded and used by older minors (13–17) on their own devices; in that case, the same minimal data practices described in this policy apply.</p>
+  <p>In line with the "children's higher protection matters" duty added to the UK GDPR by the Data (Use and Access) Act 2025, we have considered the needs of minors who may use the app. SafeRoute does not contain advertising, in-app purchases, social features, profiling, or content unsuitable for minors. We do not target children with marketing.</p>
+
+  <h2><span class="num">11</span>Security</h2>
+  <p>We protect your data using:</p>
+  <ul>
+    <li><strong>Transport security:</strong> All traffic between the app and our backend uses TLS 1.2 or higher. App Transport Security (ATS) is enforced.</li>
+    <li><strong>Authentication on backend endpoints:</strong> Our backend rejects unauthenticated requests; the auth key is shipped with the app, not entered by users.</li>
+    <li><strong>Rate limiting:</strong> All endpoints rate-limited per IP to prevent abuse.</li>
+    <li><strong>Minimal data collection:</strong> The strongest protection is data we never collect.</li>
+    <li><strong>No password storage:</strong> SafeRoute has no accounts, so we never store passwords.</li>
+    <li><strong>Server hardening:</strong> Our backend runs on Render's managed platform with automatic OS patching.</li>
+  </ul>
+  <p>No system is 100% secure. If we ever became aware of a personal data breach affecting users, we would notify the ICO within 72 hours under Article 33 UK GDPR, and notify affected users without undue delay if the breach posed a high risk to their rights.</p>
+
+  <h2><span class="num">12</span>Right to complain</h2>
+  <p>If you believe we have not handled your personal data appropriately, you have the right to lodge a complaint with the <strong>Information Commissioner's Office (ICO)</strong>:</p>
+  <ul>
+    <li><strong>Website:</strong> <a href="https://ico.org.uk/concerns" target="_blank" rel="noopener">ico.org.uk/concerns</a></li>
+    <li><strong>Phone:</strong> 0303 123 1113</li>
+    <li><strong>Post:</strong> Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</li>
+  </ul>
+  <p>We would prefer the chance to address your concern first — please email <a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a>.</p>
+
+  <h2><span class="num">13</span>Changes to this policy</h2>
+  <p>We may update this policy from time to time, for example to reflect changes to our app, our subprocessors, or applicable law. Material changes will be reflected by an updated "Effective date" at the top of this document. Significant changes that introduce new processing purposes will be communicated through an in-app notice before the new processing begins.</p>
+  <p>The current version of this policy is always available at this URL.</p>
+
+  <h2><span class="num">14</span>Contact</h2>
+  <p>For privacy questions, data subject rights requests, or anything else covered by this policy:</p>
+  <p><strong>Minhaj Khan</strong><br>
+  Email: <strong><a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a></strong></p>
+
+  <footer class="tail">
+    <p>// END OF POLICY</p>
+    <p class="review">This privacy policy was last reviewed on 5 May 2026. SafeRoute is an independent project and is not affiliated with the UK Government, OpenStreetMap, Mapbox, Apple, or any of the other named parties.</p>
+  </footer>
+
+</main>
+
+</body>
+</html>
