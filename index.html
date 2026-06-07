@@ -369,9 +369,9 @@
 
   <dl class="doc-meta">
     <dt>Effective</dt>
-    <dd>5 May 2026</dd>
+    <dd>6 June 2026</dd>
     <dt>Updated</dt>
-    <dd>5 May 2026</dd>
+    <dd>6 June 2026</dd>
     <dt>Controller</dt>
     <dd>Minhaj Khan</dd>
     <dt>Contact</dt>
@@ -379,7 +379,7 @@
   </dl>
 
   <h2><span class="num">01</span>Who we are</h2>
-  <p>SafeRoute is a crime-aware walking navigation app for the United Kingdom. The data controller is <strong>Minhaj Khan</strong> (an individual based in the State of New York, United States), referred to throughout this policy as "we," "us," or "SafeRoute."</p>
+  <p>SafeRoute is a crime-aware walking navigation app for the United Kingdom and New York City, USA. The data controller is <strong>Minhaj Khan</strong> (an individual based in the State of New York, United States), referred to throughout this policy as "we," "us," or "SafeRoute."</p>
   <p><strong>Contact:</strong> <a href="mailto:minhaj@safe-route.app">minhaj@safe-route.app</a></p>
   <p>This policy explains what personal information SafeRoute collects, why we collect it, how we use it, and the rights you have under the UK General Data Protection Regulation (UK GDPR) and the UK Data Protection Act 2018, as amended by the Data (Use and Access) Act 2025.</p>
 
@@ -394,7 +394,7 @@
   <p>When you actively use SafeRoute to plan or follow a route, the app reads your device's GPS location. Coordinates are sent to our backend solely to compute walking routes and to retrieve crime context for your area. Coordinates are not stored against any persistent identifier on our servers.</p>
 
   <h3>Search queries</h3>
-  <p>Text you type into the place-search box (for example, a destination name) is sent to our backend, which forwards it to OpenStreetMap's Nominatim service for geocoding.</p>
+  <p>Text you type into the place-search box (for example, a destination name) is sent to our backend, which forwards it to Mapbox's geocoding service to turn it into a map location. We do not store your searches or link them to you.</p>
 
   <h3>Motion sensor data</h3>
   <p>If you use the SafeRoute Apple Watch companion, the watch reads device motion data on-device only, to detect off-route deviations. Motion data is not transmitted to our servers.</p>
@@ -402,7 +402,10 @@
   <h3>Technical request data</h3>
   <p>Our backend logs basic request metadata for security and abuse-prevention (request timestamps, IP addresses, response codes). Logs are retained for no more than 30 days and are not used to build a user profile.</p>
 
-  <p>We do <strong>not</strong> use any analytics SDKs, advertising identifiers, attribution frameworks, or third-party trackers. SafeRoute is configured with <code>NSPrivacyTracking = false</code> in its Privacy Manifest.</p>
+  <h3>Anonymous usage analytics</h3>
+  <p>To understand which features are used and to catch performance problems, SafeRoute records a small number of <strong>anonymous, aggregate</strong> usage signals through <strong>TelemetryDeck</strong>, a privacy-focused, GDPR-compliant analytics provider. These signals are limited to event names (for example, that a screen was opened or a route was found), coarse load-time bands, and a coarse region label (US or UK). They <strong>never</strong> include your search text, coordinates, addresses, routes, contacts, or any identifier that could single you out. TelemetryDeck does not use advertising identifiers and does not track you across other apps or websites. You can turn this off at any time in the app under <em>About → Anonymous analytics</em>.</p>
+
+  <p>Beyond the anonymous analytics described above, SafeRoute uses <strong>no</strong> advertising identifiers, attribution frameworks, or cross-app trackers, and is configured with <code>NSPrivacyTracking = false</code> in its Privacy Manifest.</p>
 
   <h2><span class="num">04</span>What we do not collect</h2>
   <p>To remove ambiguity, SafeRoute does <strong>not</strong> collect:</p>
@@ -480,16 +483,28 @@
           <td>United States</td>
         </tr>
         <tr>
-          <td><strong>OpenStreetMap Foundation</strong> (Nominatim)</td>
-          <td>Search query text and approximate viewbox</td>
-          <td>Geocoding</td>
+          <td><strong>OpenStreetMap Foundation</strong> (Overpass)</td>
+          <td>Approximate area coordinates only</td>
+          <td>Nearby safe-place lookups (Find Help)</td>
           <td>Germany (Europe)</td>
         </tr>
         <tr>
           <td><strong>data.police.uk</strong> (UK Home Office)</td>
           <td>Bounding-box coordinates only</td>
-          <td>Public crime statistics retrieval</td>
+          <td>Public crime statistics retrieval (United Kingdom)</td>
           <td>United Kingdom</td>
+        </tr>
+        <tr>
+          <td><strong>NYC Open Data</strong> (City of New York / NYPD)</td>
+          <td>Bounding-box coordinates only</td>
+          <td>Public crime statistics retrieval (New York)</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td><strong>TelemetryDeck</strong></td>
+          <td>Anonymous event &amp; performance signals (no personal data, no identifiers)</td>
+          <td>Anonymous usage analytics (opt-out in app)</td>
+          <td>Germany (EU)</td>
         </tr>
         <tr>
           <td><strong>Render Services, Inc.</strong></td>
@@ -573,7 +588,7 @@
 
   <footer class="tail">
     <p>// END OF POLICY</p>
-    <p class="review">This privacy policy was last reviewed on 5 May 2026. SafeRoute is an independent project and is not affiliated with the UK Government, OpenStreetMap, Mapbox, Apple, or any of the other named parties.</p>
+    <p class="review">This privacy policy was last reviewed on 6 June 2026. SafeRoute is an independent project and is not affiliated with the UK Government, the City of New York or the NYPD, OpenStreetMap, Mapbox, TelemetryDeck, Apple, or any of the other named parties.</p>
   </footer>
 
 </main>
