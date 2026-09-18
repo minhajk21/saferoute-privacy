@@ -403,9 +403,18 @@
   <p>Our backend logs basic request metadata for security and abuse-prevention (request timestamps, IP addresses, response codes). Logs are retained for no more than 30 days and are not used to build a user profile.</p>
 
   <h3>Anonymous usage analytics</h3>
-  <p>To understand which features are used and to catch performance problems, SafeRoute records a small number of <strong>anonymous, aggregate</strong> usage signals through <strong>TelemetryDeck</strong>, a privacy-focused, GDPR-compliant analytics provider. These signals are limited to event names (for example, that a screen was opened or a route was found), coarse load-time bands, and a coarse region label (for example US, UK, Canada, or Mexico). They <strong>never</strong> include your search text, coordinates, addresses, routes, contacts, or any identifier that could single you out. TelemetryDeck does not use advertising identifiers and does not track you across other apps or websites. You can turn this off at any time in the app under <em>About → Anonymous analytics</em>.</p>
+  <p>To understand which features are used and to catch performance problems, SafeRoute records a small number of <strong>anonymous, aggregate</strong> usage signals through <strong>TelemetryDeck</strong>, a privacy-focused, GDPR-compliant analytics provider. These signals carry an event name (for example, that a screen was opened or a route was found) and a small set of coarse, bucketed values describing what happened &mdash; how many routes were returned and whether the safest was low, moderate or high for reported incidents; a load-time band; a failure reason; how long a screen was open, to the nearest band; and a coarse region label (for example US, UK, Canada, or Mexico). They <strong>never</strong> include your search text, coordinates, addresses, routes, or contacts.</p>
 
-  <p>Beyond the anonymous analytics described above, SafeRoute uses <strong>no</strong> advertising identifiers, attribution frameworks, or cross-app trackers, and is configured with <code>NSPrivacyTracking = false</code> in its Privacy Manifest.</p>
+  <p>They are not, however, wholly identifier-free, and we would rather say so than imply otherwise. TelemetryDeck assigns each installation a <strong>pseudonymous client identifier</strong>, derived from the vendor identifier iOS gives us and hashed before it is stored. It is stable across sessions on the same device, which is what lets us tell one returning user from ten new ones. It is not your name, it is not shared with anyone, it cannot be reversed into your identity, it is reset if you delete and reinstall the app, and it is never combined with data from other companies. TelemetryDeck does not use advertising identifiers and does not track you across other apps or websites. You can turn this off at any time in the app under <em>About → Anonymous analytics</em>.</p>
+
+  <p>Beyond the anonymous analytics described above, SafeRoute uses <strong>no</strong> advertising identifiers and <strong>no</strong> cross-app trackers, and is configured with <code>NSPrivacyTracking = false</code> in its Privacy Manifest.</p>
+
+  <h3>Where an install came from</h3>
+  <p>We advertise SafeRoute on the App Store, and we need to know whether those ads work. On its first launch the app asks iOS for an <strong>attribution token</strong> using Apple's own AdServices framework and sends it to <code>api-adservices.apple.com</code>, which answers whether this install followed one of our Apple Search Ads. We keep two things from that answer: a single label &mdash; <em>appleSearchAds</em> or <em>organic</em> &mdash; and, where Apple supplies one, the numeric campaign identifier. Everything else Apple returns is discarded on the device.</p>
+  <p>This is Apple's own measurement API, not a third-party one. It does <strong>not</strong> use the advertising identifier (IDFA), it requires no App Tracking Transparency prompt, and it describes the advert rather than the person &mdash; so it is not tracking as Apple defines it. The resulting label is recorded as one analytics event, which means it carries the same pseudonymous client identifier described above, and it is silenced entirely if you have turned analytics off.</p>
+
+  <h3>What is in your ears</h3>
+  <p>To decide whether open-ear audio hardware is worth supporting, the app checks which kind of output your audio is currently routed to and records it as one of five broad categories: built-in speaker, wired, other Bluetooth, open-ear glasses, or other. The device's own name for that output &mdash; which is free text you may have personalised &mdash; is matched on the phone and discarded immediately. It is never stored, never logged and never transmitted; only the category leaves the device. SafeRoute requests no microphone access and records no audio.</p>
 
   <h2><span class="num">04</span>What we do not collect</h2>
   <p>To remove ambiguity, SafeRoute does <strong>not</strong> collect:</p>
@@ -415,7 +424,8 @@
     <li>Your device's advertising identifier (IDFA)</li>
     <li>Browsing history outside of SafeRoute</li>
     <li>Health data, biometrics, or financial information</li>
-    <li>Persistent identifiers tying your activity across sessions</li>
+    <li>Any identifier that ties your activity to <em>you</em> &mdash; the analytics client identifier described in section 03 is per-installation and pseudonymous, and is never linked to a name, an account, or data from other companies</li>
+    <li>Any identifier that follows you into other apps or websites</li>
   </ul>
 
   <h2><span class="num">05</span>Why we use this information</h2>
@@ -439,7 +449,7 @@
         <tr>
           <td>Showing crime context along candidate routes</td>
           <td>Approximate area coordinates</td>
-          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — providing the core safety feature you opened the app for.</td>
+          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — providing the crime-context feature you opened the app for.</td>
         </tr>
         <tr>
           <td>Geocoding place searches</td>
@@ -455,6 +465,16 @@
           <td>Backend security, abuse prevention, rate limiting</td>
           <td>Request metadata, IP address</td>
           <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — protecting the service from abuse.</td>
+        </tr>
+        <tr>
+          <td>Understanding which features are used, and catching failures</td>
+          <td>Bucketed event signals; a pseudonymous per-installation identifier</td>
+          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — improving a free safety app we cannot otherwise observe in use. You can withdraw at any time via <em>About → Anonymous analytics</em>, which stops the processing entirely.</td>
+        </tr>
+        <tr>
+          <td>Measuring whether our App Store adverts produced an install</td>
+          <td>An Apple attribution token; the resulting label and campaign id</td>
+          <td>Legitimate interests <span class="mono">Art. 6(1)(f)</span> — knowing whether money spent on advertising works. Apple's own API, no advertising identifier, no cross-app tracking; covered by the same analytics opt-out.</td>
         </tr>
       </tbody>
     </table>
@@ -485,7 +505,7 @@
         <tr>
           <td><strong>OpenStreetMap Foundation</strong> (Overpass)</td>
           <td>Approximate area coordinates only</td>
-          <td>Nearby safe-place lookups (Find Help) and street-lighting for well-lit routes</td>
+          <td>Nearby safe-place lookups (Find Help) and street-lighting coverage along candidate routes</td>
           <td>Germany (Europe)</td>
         </tr>
         <tr>
@@ -556,7 +576,7 @@
         </tr>
         <tr>
           <td><strong>TelemetryDeck</strong></td>
-          <td>Anonymous event &amp; performance signals (no personal data, no identifiers)</td>
+          <td>Anonymous event &amp; performance signals (no personal data; a pseudonymous per-installation client identifier &mdash; see section 03)</td>
           <td>Anonymous usage analytics (opt-out in app)</td>
           <td>Germany (EU)</td>
         </tr>
@@ -568,7 +588,7 @@
         </tr>
         <tr>
           <td><strong>Apple Inc.</strong></td>
-          <td>App distribution; crash reports if you opted in</td>
+          <td>App distribution; crash reports if you opted in; a first-launch Apple Search Ads attribution token (AdServices)</td>
           <td>iOS / watchOS platform services</td>
           <td>Various</td>
         </tr>
